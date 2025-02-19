@@ -1,7 +1,9 @@
 package com.casestudy.home;
 
-public class BedRoom extends Room{
-    public BedRoom(String name,int noOfDevices, int noOfONDevices, int noOfOFFDevices) {
-        super(name,noOfDevices, noOfONDevices, noOfOFFDevices);
+import com.casestudy.interfaces.BedroomDevice;
+
+public class BedRoom extends Room implements BedroomDevice {
+    public BedRoom() {
+        this.setName("Bedroom");
     }
 }

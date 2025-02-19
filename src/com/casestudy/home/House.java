@@ -6,9 +6,11 @@ public class House {
     private ArrayList<Room> rooms = new ArrayList<>();
 
     public House() {
-        rooms.add(new Kitchen("Kitchen",5,3,2));
-        rooms.add(new BedRoom("BedRoom",2,1,1));
-        rooms.add(new WashRoom("WashRoom",4,3,1));
+        rooms.add(new Kitchen());
+        rooms.add(new BedRoom());
+        rooms.add(new WashRoom());
+        rooms.add(new Corridor());
+        rooms.add(new LivingRoom());
     }
 
     public void addRoom(Room room) {

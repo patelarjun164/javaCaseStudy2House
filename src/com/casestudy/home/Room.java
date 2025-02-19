@@ -1,17 +1,20 @@
 package com.casestudy.home;
 
 public class Room {
+    private int roomNo =0;
+    public static int count = 1;
     private String name;
     private int noOfDevices;
     private int noOfONDevices;
     private int noOfOFFDevices;
 
 
-    public Room(String name, int noOfDevices, int noOfONDevices, int noOfOFFDevices) {
-        this.name = name;
-        this.noOfDevices = noOfDevices;
-        this.noOfONDevices = noOfONDevices;
-        this.noOfOFFDevices = noOfOFFDevices;
+    public Room() {
+        roomNo = count++;
+    }
+
+    public int assignRoomNo(){
+        return ++roomNo;
     }
 
     public String getName() {
@@ -46,13 +49,22 @@ public class Room {
         this.noOfOFFDevices = noOfOFFDevices;
     }
 
+    public int getRoomNo() {
+        return roomNo;
+    }
+
+    public void setRoomNo(int roomNo) {
+        this.roomNo = roomNo;
+    }
+
     @Override
     public String toString() {
         return "Room{" +
-                "name='" + name + '\'' +
+                "roomNo=" + roomNo +
+                ", name='" + name + '\'' +
                 ", noOfDevices=" + noOfDevices +
                 ", noOfONDevices=" + noOfONDevices +
                 ", noOfOFFDevices=" + noOfOFFDevices +
-                '}';
+                '}' + "\n";
     }
 }

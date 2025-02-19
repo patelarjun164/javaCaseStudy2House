@@ -1,7 +1,9 @@
 package com.casestudy.home;
 
-public class Kitchen extends Room{
-    public Kitchen(String name,int noOfDevices, int noOfONDevices, int noOfOFFDevices) {
-        super(name,noOfDevices, noOfONDevices, noOfOFFDevices);
+import com.casestudy.interfaces.KitchenDevice;
+
+public class Kitchen extends Room implements KitchenDevice {
+    public Kitchen() {
+        this.setName("Kitchen");
     }
 }
