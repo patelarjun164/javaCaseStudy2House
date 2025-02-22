@@ -1,6 +1,9 @@
 package com.casestudy.home;
 
-public class Room {
+import com.casestudy.devices.AC;
+import com.casestudy.devices.Device;
+
+abstract public class Room {
     private int roomNo =0;
     public static int count = 1;
     private String name;
@@ -56,6 +59,10 @@ public class Room {
     public void setRoomNo(int roomNo) {
         this.roomNo = roomNo;
     }
+
+    abstract public void addDevice(Device device);
+
+
 
     @Override
     public String toString() {

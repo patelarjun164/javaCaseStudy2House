@@ -1,7 +1,9 @@
 package com.casestudy.devices;
 
-public class Light extends Device{
-    public Light(int id, String name, boolean status) {
-        super(id, name, status);
+import com.casestudy.interfaces.*;
+
+public class Light extends Device implements KitchenDevice, WashRoomDevice, CorridorDevice, BedroomDevice, LivingRoomDevice {
+    public Light(int id, boolean status) {
+        super(id, "Light", status);
     }
 }

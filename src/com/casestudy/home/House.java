@@ -9,8 +9,8 @@ public class House {
         rooms.add(new Kitchen());
         rooms.add(new BedRoom());
         rooms.add(new WashRoom());
-        rooms.add(new Corridor());
         rooms.add(new LivingRoom());
+        rooms.add(new Corridor());
     }
 
     public void addRoom(Room room) {

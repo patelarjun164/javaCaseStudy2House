@@ -1,7 +1,10 @@
 package com.casestudy.devices;
 
-public class MusicPlayer extends Device{
-    public MusicPlayer(int id, String name, boolean status) {
-        super(id, name, status);
+import com.casestudy.interfaces.BedroomDevice;
+import com.casestudy.interfaces.LivingRoomDevice;
+
+public class MusicPlayer extends Device implements BedroomDevice, LivingRoomDevice {
+    public MusicPlayer(int id, boolean status) {
+        super(id, "MusicPlayer", status);
     }
 }

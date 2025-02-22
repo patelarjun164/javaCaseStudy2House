@@ -1,7 +1,10 @@
 package com.casestudy.devices;
 
-public class TV extends Device{
-    public TV(int id, String name, boolean status) {
-        super(id, name, status);
+import com.casestudy.interfaces.BedroomDevice;
+import com.casestudy.interfaces.LivingRoomDevice;
+
+public class TV extends Device implements BedroomDevice, LivingRoomDevice {
+    public TV(int id, boolean status) {
+        super(id, "TV", status);
     }
 }
