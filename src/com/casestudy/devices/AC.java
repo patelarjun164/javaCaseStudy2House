@@ -9,4 +9,9 @@ public class AC extends Device implements BedroomDevice, CorridorDevice, LivingR
     public AC(int id, boolean status) {
         super(id, "AC", status);
     }
+
+    @Override
+    public void accessThisDevice() {
+
+    }
 }

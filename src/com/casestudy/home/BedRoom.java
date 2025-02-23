@@ -17,6 +17,7 @@ public class BedRoom extends Room implements BedroomDevice {
     public void addDevice(Device device) {
         if (device instanceof BedroomDevice) {
             this.devices.add(device);
+            this.setNoOfDevices(this.getNoOfDevices()+1);
         } else {
             System.out.println("Device mismatch error: " + device.getClass().getSimpleName() + " is not a BedroomDevice.");
         }
@@ -49,5 +50,14 @@ public class BedRoom extends Room implements BedroomDevice {
         return "BedRoom{" +
                 "devices=" + devices +
                 '}';
+    }
+
+    @Override
+    public List<Device> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<Device> devices) {
+        this.devices = devices;
     }
 }

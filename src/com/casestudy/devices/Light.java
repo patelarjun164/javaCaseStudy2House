@@ -6,4 +6,9 @@ public class Light extends Device implements KitchenDevice, WashRoomDevice, Corr
     public Light(int id, boolean status) {
         super(id, "Light", status);
     }
+
+    @Override
+    public void accessThisDevice() {
+
+    }
 }

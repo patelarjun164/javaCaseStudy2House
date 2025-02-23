@@ -6,4 +6,9 @@ public class Gyser extends Device implements WashRoomDevice{
     public Gyser(int id, boolean status) {
         super(id, "Gyser", status);
     }
+
+    @Override
+    public void accessThisDevice() {
+
+    }
 }

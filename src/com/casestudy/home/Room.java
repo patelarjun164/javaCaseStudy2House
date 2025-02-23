@@ -4,6 +4,7 @@ import com.casestudy.devices.AC;
 import com.casestudy.devices.Device;
 
 import java.util.ArrayList;
+import java.util.List;
 
 abstract public class Room {
     private int roomNo =0;
@@ -65,6 +66,7 @@ abstract public class Room {
     abstract public void addDevice(Device device);
     abstract public ArrayList<Device> getONDevicesList();
     abstract public ArrayList<Device> getOFFDevicesList();
+    abstract public List<Device> getDevices();
 
 
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WashRoom extends Room{
-    private List<Device> devices = new ArrayList<Device>();
+    private List<Device> devices = new ArrayList<>();
 
     public WashRoom() {
         this.setName("Washroom");
@@ -17,6 +17,7 @@ public class WashRoom extends Room{
     public void addDevice(Device device) {
         if (device instanceof WashRoomDevice) {
             this.devices.add(device);
+            this.setNoOfDevices(this.getNoOfDevices()+1);
         } else {
             System.out.println("Device mismatch error: " + device.getClass().getSimpleName() + " is not a BedroomDevice.");
         }
@@ -31,6 +32,15 @@ public class WashRoom extends Room{
             }
         }
         return onDevices;
+    }
+
+    @Override
+    public List<Device> getDevices() {
+        return devices;
+    }
+
+    public void setDevices(List<Device> devices) {
+        this.devices = devices;
     }
 
     @Override

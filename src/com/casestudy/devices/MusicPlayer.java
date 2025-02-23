@@ -7,4 +7,9 @@ public class MusicPlayer extends Device implements BedroomDevice, LivingRoomDevi
     public MusicPlayer(int id, boolean status) {
         super(id, "MusicPlayer", status);
     }
+
+    @Override
+    public void accessThisDevice() {
+
+    }
 }

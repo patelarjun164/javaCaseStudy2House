@@ -1,11 +1,14 @@
 package com.casestudy.devices;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
-public class Device {
+abstract public class Device {
     static Scanner sc = new Scanner(System.in);
     private int id;
     private String name;
     private boolean status;
+    private LocalDateTime previousStateTime = LocalDateTime.now();
 
     public Device(int id, String name, boolean status) {
         this.id = id;
@@ -69,6 +72,8 @@ public class Device {
         return new Light(1, false);
     }
 
+    abstract public void accessThisDevice();
+
     @Override
     public String toString() {
         return "Device{" +
@@ -77,4 +82,5 @@ public class Device {
                 ", status=" + status +
                 '}';
     }
+
 }

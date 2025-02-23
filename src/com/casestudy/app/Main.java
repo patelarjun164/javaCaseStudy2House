@@ -18,6 +18,7 @@ public class Main {
             System.out.println("2. Add Device");
             System.out.println("3. Display All Devices");
             System.out.println("4. Check Status Of Any Room");
+            System.out.println("5. Access Any Device of Any room");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
@@ -27,6 +28,8 @@ public class Main {
                 case 2 -> addDevice();
                 case 3 -> displayDevices();
                 case 4 -> checkStatusOfAnyRoom();
+                case 5 -> accessAnyDevice();
+
                 case 0 -> {
                     System.out.println("Exiting the application...");
                     return;
@@ -163,20 +166,67 @@ public class Main {
                     }
                     case 2 -> {
                         System.out.println("You are in " + selectedRoom.getName() + ".");
-                        System.out.println(selectedRoom.getName() + " have total " + selectedRoom.getNoOfDevices() + " On devices.");
-                        System.out.println("List of ON Devices");
                         ArrayList<Device> onDevices = selectedRoom.getONDevicesList();
+                        System.out.println(selectedRoom.getName() + " have total " + onDevices.size() + " On devices.");
+                        System.out.println("List of ON Devices");
                         System.out.println(onDevices);
                     }
 
                     case 3 -> {
                         System.out.println("You are in " + selectedRoom.getName() + ".");
-                        System.out.println(selectedRoom.getName() + " have total " + selectedRoom.getNoOfDevices() + " Off devices.");
-                        System.out.println("List of ON Devices");
                         ArrayList<Device> offDevices = selectedRoom.getOFFDevicesList();
+                        System.out.println(selectedRoom.getName() + " have total " + offDevices.size() + " Off devices.");
+                        System.out.println("List of OFF Devices");
                         System.out.println(offDevices);
                     }
                 }
+                if (next == 0) break;
+            }
+        }
+    }
+
+    private static void accessAnyDevice() {
+        while (true) {
+            if (house.getRooms().isEmpty()) {
+                System.out.println("No rooms available! Please add a room first.");
+                return;
+            }
+
+            System.out.println("\nSelect Room to Check Status:");
+            displayAllRoom();
+            int roomChoice = sc.nextInt();
+
+            if (roomChoice == 0) return;
+            if (roomChoice < 1 || roomChoice > house.getRooms().size()) {
+                System.out.println("Invalid choice! Please try again.");
+                continue;
+            }
+
+            Room selectedRoom = house.getRooms().get(roomChoice - 1);
+            System.out.println("You are in " + selectedRoom.getName());
+            while (true) {
+                System.out.println("\nDevices of " + selectedRoom.getName() + "...");
+                System.out.println("Available devices in " + selectedRoom.getName());
+
+                System.out.println(selectedRoom);
+                    System.out.println("Select Device you want to access");
+                for (int i = 0; i < selectedRoom.getNoOfDevices(); i++) {
+                    System.out.println((i+1) + ". "+ selectedRoom.getDevices().get(i).getName());
+                }
+
+                int selectedDeviceIndex = sc.nextInt();
+                while(selectedDeviceIndex==0){
+                    System.out.println("Enter Currect Choice");
+                    selectedDeviceIndex = sc.nextInt();
+                }
+                Device selecteDevice = selectedRoom.getDevices().get(selectedDeviceIndex-1);
+                System.out.println(selecteDevice);
+
+                System.out.println("Select control option:");
+                selecteDevice.accessThisDevice();
+
+                System.out.println("Press 1 to access device, or 0 to go back.");
+                int next = sc.nextInt();
                 if (next == 0) break;
             }
         }
