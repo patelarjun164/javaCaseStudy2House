@@ -3,6 +3,8 @@ package com.casestudy.home;
 import com.casestudy.devices.AC;
 import com.casestudy.devices.Device;
 
+import java.util.ArrayList;
+
 abstract public class Room {
     private int roomNo =0;
     public static int count = 1;
@@ -61,6 +63,8 @@ abstract public class Room {
     }
 
     abstract public void addDevice(Device device);
+    abstract public ArrayList<Device> getONDevicesList();
+    abstract public ArrayList<Device> getOFFDevicesList();
 
 
 
@@ -74,4 +78,5 @@ abstract public class Room {
                 ", noOfOFFDevices=" + noOfOFFDevices +
                 '}' + "\n";
     }
+
 }

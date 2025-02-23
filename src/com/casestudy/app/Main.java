@@ -17,6 +17,7 @@ public class Main {
             System.out.println("1. Add Room");
             System.out.println("2. Add Device");
             System.out.println("3. Display All Devices");
+            System.out.println("4. Check Status Of Any Room");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
@@ -25,6 +26,7 @@ public class Main {
                 case 1 -> addRoom();
                 case 2 -> addDevice();
                 case 3 -> displayDevices();
+                case 4 -> checkStatusOfAnyRoom();
                 case 0 -> {
                     System.out.println("Exiting the application...");
                     return;
@@ -96,6 +98,14 @@ public class Main {
         }
     }
 
+    private static void displayAllRoom() {
+        for (int i = 0; i < house.getRooms().size(); i++) {
+            System.out.println((i + 1) + ". " + house.getRooms().get(i).getName());
+        }
+        System.out.println("0. Back");
+        System.out.print("Enter your choice: ");
+    }
+
     private static void displayDevices() {
         while (true) {
             if (house.getRooms().isEmpty()) {
@@ -104,11 +114,7 @@ public class Main {
             }
 
             System.out.println("\nSelect Room to View Devices:");
-            for (int i = 0; i < house.getRooms().size(); i++) {
-                System.out.println((i + 1) + ". " + house.getRooms().get(i).getName());
-            }
-            System.out.println("0. Back");
-            System.out.print("Enter your choice: ");
+            displayAllRoom();
             int roomChoice = sc.nextInt();
 
             if (roomChoice == 0) return;
@@ -119,6 +125,60 @@ public class Main {
 
             Room selectedRoom = house.getRooms().get(roomChoice - 1);
             System.out.println("Devices in " + selectedRoom.getName() + ": " + selectedRoom);
+        }
+    }
+
+    private static void checkStatusOfAnyRoom() {
+        while (true) {
+            if (house.getRooms().isEmpty()) {
+                System.out.println("No rooms available! Please add a room first.");
+                return;
+            }
+
+            System.out.println("\nSelect Room to Check Status:");
+            displayAllRoom();
+            int roomChoice = sc.nextInt();
+
+            if (roomChoice == 0) return;
+            if (roomChoice < 1 || roomChoice > house.getRooms().size()) {
+                System.out.println("Invalid choice! Please try again.");
+                continue;
+            }
+
+            Room selectedRoom = house.getRooms().get(roomChoice - 1);
+            while (true) {
+                System.out.println("\nChecking Status of  " + selectedRoom.getName() + "...");
+                System.out.println("1. Display All Devices");
+                System.out.println("2. Display ON Devices");
+                System.out.println("3. Display OFF Devices");
+
+                System.out.println("Press 1 to add another device, or 0 to go back.");
+                int next = sc.nextInt();
+
+                switch (next) {
+                    case 1 -> {
+                        System.out.println("You are in " + selectedRoom.getName() + ".");
+                        System.out.println(selectedRoom.getName() + " have total " + selectedRoom.getNoOfDevices() + " devices installed");
+                        System.out.println(selectedRoom);
+                    }
+                    case 2 -> {
+                        System.out.println("You are in " + selectedRoom.getName() + ".");
+                        System.out.println(selectedRoom.getName() + " have total " + selectedRoom.getNoOfDevices() + " On devices.");
+                        System.out.println("List of ON Devices");
+                        ArrayList<Device> onDevices = selectedRoom.getONDevicesList();
+                        System.out.println(onDevices);
+                    }
+
+                    case 3 -> {
+                        System.out.println("You are in " + selectedRoom.getName() + ".");
+                        System.out.println(selectedRoom.getName() + " have total " + selectedRoom.getNoOfDevices() + " Off devices.");
+                        System.out.println("List of ON Devices");
+                        ArrayList<Device> offDevices = selectedRoom.getOFFDevicesList();
+                        System.out.println(offDevices);
+                    }
+                }
+                if (next == 0) break;
+            }
         }
     }
 }

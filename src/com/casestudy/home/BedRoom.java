@@ -1,11 +1,7 @@
 package com.casestudy.home;
 
-import com.casestudy.devices.AC;
 import com.casestudy.devices.Device;
-import com.casestudy.devices.Light;
-import com.casestudy.devices.TV;
 import com.casestudy.interfaces.BedroomDevice;
-import com.casestudy.interfaces.KitchenDevice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +20,28 @@ public class BedRoom extends Room implements BedroomDevice {
         } else {
             System.out.println("Device mismatch error: " + device.getClass().getSimpleName() + " is not a BedroomDevice.");
         }
+    }
+
+    @Override
+    public ArrayList<Device> getONDevicesList() {
+        ArrayList<Device> onDevices = new ArrayList<>();
+        for (Device device : devices) {
+            if (device.isStatus()) {
+                onDevices.add(device);
+            }
+        }
+        return onDevices;
+    }
+
+    @Override
+    public ArrayList<Device> getOFFDevicesList() {
+        ArrayList<Device> offDevices = new ArrayList<>();
+        for (Device device : devices) {
+            if (!device.isStatus()) {
+                offDevices.add(device);
+            }
+        }
+        return offDevices;
     }
 
     @Override
