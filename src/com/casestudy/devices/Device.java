@@ -74,6 +74,18 @@ abstract public class Device {
 
     abstract public void accessThisDevice();
 
+    public void getTimeSincePreviousStateChange() {
+        LocalDateTime currentTime = LocalDateTime.now();
+        Duration duration = Duration.between(previousStateTime, currentTime);
+
+        long hours = duration.toHours();
+        long minutes = duration.toMinutes() % 60;
+        long seconds = duration.getSeconds() % 60;
+
+        System.out.println("Device has been " + (status ? "On" : "Off") + " for: "
+                + hours + " hrs, " + minutes + " mins, " + seconds + " secs.");
+    }
+
     @Override
     public String toString() {
         return "Device{" +
