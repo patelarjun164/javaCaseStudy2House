@@ -11,7 +11,7 @@ public class Main {
     static House house = new House();
 
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        System.out.println("\033[36mHello, World!\033[0m");
         while (true) {
             System.out.println("\nMain Menu:");
             System.out.println("1. Add Room");
