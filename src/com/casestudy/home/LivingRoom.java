@@ -1,6 +1,7 @@
 package com.casestudy.home;
 
 import com.casestudy.devices.Device;
+import com.casestudy.exceptions.DeviceMismatch;
 import com.casestudy.interfaces.KitchenDevice;
 import com.casestudy.interfaces.LivingRoomDevice;
 
@@ -15,12 +16,12 @@ public class LivingRoom extends Room{
     }
 
     @Override
-    public void addDevice(Device device) {
+    public void addDevice(Device device) throws DeviceMismatch {
         if (device instanceof LivingRoomDevice) {
             this.devices.add(device);
             this.setNoOfDevices(this.getNoOfDevices()+1);
         } else {
-            System.out.println("Device mismatch error: " + device.getClass().getSimpleName() + " is not a BedroomDevice.");
+            throw new DeviceMismatch("Device mismatch error: " + device.getName() + " can not be added to " + this.getName());
         }
     }
 

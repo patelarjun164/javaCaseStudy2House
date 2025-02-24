@@ -114,7 +114,7 @@ public class MusicPlayer extends Device implements BedroomDevice, LivingRoomDevi
                     break;
                 }
                 System.out.println("Enter song name you want to add to playlist");
-                sc.next();
+                sc.nextLine();
                 String songName = sc.nextLine();
                 songs.add(songName);
                 System.out.println("Song Added Successfully...!");

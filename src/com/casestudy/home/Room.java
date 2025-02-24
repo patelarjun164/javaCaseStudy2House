@@ -2,6 +2,7 @@ package com.casestudy.home;
 
 import com.casestudy.devices.AC;
 import com.casestudy.devices.Device;
+import com.casestudy.exceptions.DeviceMismatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +64,7 @@ abstract public class Room {
         this.roomNo = roomNo;
     }
 
-    abstract public void addDevice(Device device);
+    abstract public void addDevice(Device device) throws DeviceMismatch;
     abstract public ArrayList<Device> getONDevicesList();
     abstract public ArrayList<Device> getOFFDevicesList();
     abstract public List<Device> getDevices();

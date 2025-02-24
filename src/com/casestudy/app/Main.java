@@ -1,8 +1,7 @@
 package com.casestudy.app;
-
 import com.casestudy.devices.Device;
+import com.casestudy.exceptions.DeviceMismatch;
 import com.casestudy.home.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,7 +9,7 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     static House house = new House();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DeviceMismatch {
         System.out.println("\033[36mHello, World!\033[0m");
         while (true) {
             System.out.println("\nMain Menu:");
@@ -67,7 +66,7 @@ public class Main {
         }
     }
 
-    private static void addDevice() {
+    private static void addDevice() throws DeviceMismatch {
         while (true) {
             if (house.getRooms().isEmpty()) {
                 System.out.println("No rooms available! Please add a room first.");
@@ -92,8 +91,12 @@ public class Main {
             while (true) {
                 System.out.println("\nAdding device to " + selectedRoom.getName() + "...");
                 Device newDevice = Device.selectDevice(); // Assuming Device.selectDevice() gets user input
-                selectedRoom.addDevice(newDevice);
-                System.out.println(selectedRoom);
+                try {
+                    selectedRoom.addDevice(newDevice);
+                    System.out.println(selectedRoom);
+                } catch (DeviceMismatch dme) {
+                    System.out.println(dme.getMessage());
+                }
 //                System.out.println("Device added successfully!");
 
                 System.out.println("Press 1 to add another device, or 0 to go back.");
