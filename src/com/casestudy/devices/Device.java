@@ -94,5 +94,4 @@ abstract public class Device {
                 ", status=" + status +
                 '}';
     }
-
 }
