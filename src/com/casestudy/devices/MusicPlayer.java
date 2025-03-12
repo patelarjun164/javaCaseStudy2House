@@ -4,10 +4,11 @@ import com.casestudy.interfaces.BedroomDevice;
 import com.casestudy.interfaces.LivingRoomDevice;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import javazoom.jl.player.Player;
-import java.io.FileInputStream;
+//import javazoom.jl.player.Player;
+//import java.io.FileInputStream;
 
 public class MusicPlayer extends Device implements BedroomDevice, LivingRoomDevice {
     private int currentVolumeLevel = 5;
@@ -28,8 +29,12 @@ public class MusicPlayer extends Device implements BedroomDevice, LivingRoomDevi
         super(id, "MusicPlayer", status);
     }
 
-    public static void play(){
-
+    public static void play() throws FileNotFoundException {
+//        FileInputStream fileInputStream = new FileInputStream("path/to/your/audio.mp3");
+//        Player player = new Player(fileInputStream);
+//        System.out.println("Playing MP3...");
+//        player.play();
+//        System.out.println("Playback finished.");
     }
     @Override
     public void accessThisDevice() {

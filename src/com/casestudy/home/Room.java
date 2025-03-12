@@ -69,7 +69,9 @@ abstract public class Room {
     abstract public ArrayList<Device> getOFFDevicesList();
     abstract public List<Device> getDevices();
 
+    public void addDeviceToRoom() {
 
+    }
 
     @Override
     public String toString() {
